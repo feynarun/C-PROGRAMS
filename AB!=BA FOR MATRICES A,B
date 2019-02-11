@@ -67,7 +67,7 @@ void check_equality(int a[10][10], int b[10][10],int n)
     if(f==n*n)
     printf("\n AB=BA in this specific case");
     else
-    printf("\n AaB!=BA in this specific case");
+    printf("\n AB!=BA in this specific case");
     
 }
 
