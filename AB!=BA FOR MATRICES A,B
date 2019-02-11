@@ -1,0 +1,101 @@
+#include<stdio.h>
+#include<conio.h>
+
+void matrix_input(int in[10][10],int n)
+{
+    int i,j;
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            printf("Enter the %d%d number\t",i+1,j+1);
+            scanf("%d",&in[i][j]);
+            printf("\n");
+        }
+    }
+}
+
+void matrix_output(int out[10][10],int n)
+{
+    int i,j;
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            
+            printf("%d\t",out[i][j]);
+          
+        }
+        printf("\n");
+    }
+
+    
+}
+
+void multiplication(int a[10][10],int b[10][10],int ab[10][10],int n)
+{
+    int i,j,k,sum;
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            sum=0;
+            for(k=0;k<n;k++)
+            {
+                sum=sum+a[i][k]*b[k][j];
+                
+                ab[i][j]=sum;
+                
+            }
+        }
+    }
+}
+
+void check_equality(int a[10][10], int b[10][10],int n)
+{
+    int i,j,f=0;
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            if(a[i][j]==b[i][j])
+            f++;
+            
+        }
+    }
+
+    if(f==n*n)
+    printf("\n AB=BA in this specific case");
+    else
+    printf("\n AaB!=BA in this specific case");
+    
+}
+
+void main()
+{
+    int i,j,k,n,a[10][10],b[10][10],ab[10][10],ba[10][10];
+    printf("Enter the size of the matrix");
+    scanf("%d",&n);
+    printf("Please input the numbers of the first matrix A");
+    printf("\n");
+    matrix_input(a,n);
+    printf("Please input the numbers of the second matrix B");
+    printf("\n");
+    matrix_input(b,n);
+    printf("This is the matrix A");
+    printf("\n");
+    matrix_output(a,n);
+    printf("This is the matrix B");
+    printf("\n");
+    matrix_output(b,n);
+    multiplication(a,b,ab,n);
+    printf("This is the matrix AB");
+    printf("\n");
+    matrix_output(ab,n);
+    multiplication(b,a,ba,n);
+    printf("This is the matrix BA");
+    printf("\n");
+    matrix_output(ba,n);
+    check_equality(ab,ba,n);
+    getch();
+}
