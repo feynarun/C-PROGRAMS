@@ -1,0 +1,28 @@
+#include<stdio.h>
+#include<conio.h>
+ 
+void main()
+{
+    int a[10],i,minimum,n;
+    clrscr();
+    printf("Enter the number of numbers in the array\n");
+    scanf("%d",&n);
+    for(i=0;i<n;i++)
+    {
+        printf("Enter the number %d\t",i);
+        scanf("%d",&a[i]);
+        printf("\t");
+    }
+   minimum=a[0];
+   for(i=0;i<n;i++)
+   {
+       if(a[i]<minimum)
+       {
+           minimum=a[i];
+       }
+   }
+    
+    printf("The smallest number in the array is %d",minimum);
+    getch();
+    
+}
