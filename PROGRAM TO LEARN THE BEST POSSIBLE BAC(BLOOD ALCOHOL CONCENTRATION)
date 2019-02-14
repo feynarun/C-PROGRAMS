@@ -1,0 +1,70 @@
+#include<stdio.h>
+#include<conio.h>
+
+void BAC_DATA_INPUT(float BAC[100],int logical_value[100],int count)
+{
+    int i;
+    printf("The machine learning program is going to take data in order to arrive at safety norms for driving\n");
+    printf("Please take note\n");
+    printf("We are going to use a term BAC that refers to the Blood Alcohol Concentration\n"); 
+    printf("Enter the number of drivers in the dataset\n");
+    scanf("%d",&count);
+    for(i=0;i<count;i++)
+    {
+        
+        printf("Enter the BAC of the driver %d\n",i+1);
+        scanf("%f",&BAC[i]);
+        printf("Was the driver involved in an accident ?Enter 1 if there was an accident or else Enter 0\n");
+        scanf("%d",&logical_value[i]);
+        
+    }
+}
+
+void Learn(float BAC[100],int logical_value[100],int count)
+{
+int i,j,temp,k;
+int p=0;
+float BAC_LIMIT[100];
+float minimum;
+for(i=0;i<count;i++)
+{
+    if(logical_value[i] ==1)
+    {
+    
+            BAC[i]=BAC_LIMIT[p];
+    //BAC_LIMIT refers to all the BAC values that resulted in an accident
+        p++;
+    //p would eventually turn out to be the number of fatalities     
+            
+        
+    }
+}
+
+minimum=BAC_LIMIT[0];
+for(k=0;k<p;k++)
+{
+    if (BAC_LIMIT[k]<minimum)
+    {
+        minimum=BAC_LIMIT[k];
+    }
+}
+
+
+
+
+
+printf("\nThe lowest permissible value of BAC for safe driving is %f",minimum);    
+    
+}
+
+void main()
+{
+  float BAC[100];
+  int logical_value[100];
+  int count; 
+  clrscr();
+  BAC_DATA_INPUT(BAC,logical_value,count); 
+  Learn(BAC,logical_value,count);
+  getch();
+    
+}
